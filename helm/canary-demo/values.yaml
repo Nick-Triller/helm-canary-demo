@@ -1,0 +1,22 @@
+# Default values for canary-demo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+canary:
+  enable: false
+  replicaCount: 0
+  image:
+    repository: docker.io/nicktriller/helm-canary-demo
+    tag: override-me
+    pullPolicy: Always
+
+image:
+  repository: docker.io/nicktriller/helm-canary-demo
+  tag: override-me
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 8080

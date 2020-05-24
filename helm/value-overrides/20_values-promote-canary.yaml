@@ -1,0 +1,5 @@
+# Canary is the new stable.
+# canary.enabled defaults to false.
+replicaCount: 6
+image:
+  tag: v1.0.1

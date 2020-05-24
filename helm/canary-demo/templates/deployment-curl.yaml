@@ -1,0 +1,25 @@
+# A test deployment that executes an HTTP call against
+# the canary demo service once per second.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "canary-demo.fullname" . }}-test
+  labels:
+    {{- include "canary-demo.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      canary-test: "true"
+  template:
+    metadata:
+      labels:
+        canary-test: "true"
+    spec:
+      containers:
+        - name: test
+          image: "docker.io/curlimages/curl:7.70.0"
+          command:
+            - /bin/sh
+            - -c
+            - "while true; do curl -s canary-demo:8080; echo; sleep 1; done"

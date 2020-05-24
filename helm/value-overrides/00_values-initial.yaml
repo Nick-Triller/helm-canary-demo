@@ -1,0 +1,4 @@
+# We start with a stable version
+replicaCount: 6
+image:
+  tag: v1.0.0
